@@ -1,0 +1,18 @@
+{
+  "ui": true,
+  "ui_dir": "/consul/ui",
+  "data_dir": "/consul/data",
+  "bind_addr": "0.0.0.0",
+  "bootstrap_expect": 1,
+  "retry_join_wan": ["dc1-server1"],
+
+  "encrypt": "HSDVV9epQyQ3wYIla5R2hA==",
+  "server": true,
+  "retry_interval": "30s",
+  "retry_max": 10,
+  
+  "log_level": "INFO",
+  "datacenter": "dc2",
+  "rejoin_after_leave": true,
+  "leave_on_terminate": true,
+}

@@ -1,0 +1,51 @@
+version: "2"
+services: 
+  dc1-server1:
+    image: consul
+    container_name: dc1-server1
+    network_mode: consul
+    volumes:
+      - /Users/kivi/workspace/consul/docker/ui:/consul/ui
+      - /Users/kivi/workspace/consul/docker/consul/dc1-server1/config.json:/consul/config.json
+    command: consul agent -config-file=/consul/config.json -data-dir=/consul/data -config-dir=/consul/config
+  dc1-server2:
+    image: consul
+    container_name: dc1-server2
+    network_mode: consul
+    volumes:
+      - /Users/kivi/workspace/consul/docker/consul/dc1-server2/config.json:/consul/config.json
+    command: consul agent -config-file=/consul/config.json -data-dir=/consul/data -config-dir=/consul/config
+  dc1-server3:
+    image: consul
+    container_name: dc1-server3
+    network_mode: consul
+    volumes:
+      - /Users/kivi/workspace/consul/docker/consul/dc1-server3/config.json:/consul/config.json
+    command:  consul agent -config-file=/consul/config.json -data-dir=/consul/data -config-dir=/consul/config
+  dc1-client1:
+    image: consul
+    container_name: dc1-client1
+    network_mode: consul
+    volumes:
+      - /Users/kivi/workspace/consul/docker/consul/dc1-client1/config.json:/consul/config.json
+    command:  consul agent -config-file=/consul/config.json -data-dir=/consul/data -config-dir=/consul/config
+    depends_on: 
+      - dc1-server1
+      - dc1-server2
+      - dc1-server3
+  dc2-server1:
+    image: consul
+    container_name: dc2-server1
+    network_mode: consul
+    volumes:
+      - /Users/kivi/workspace/consul/docker/consul/dc2-server1/config.json:/consul/config.json
+    command:  consul agent -config-file=/consul/config.json -data-dir=/consul/data -config-dir=/consul/config
+  dc2-client1:
+    image: consul
+    container_name: dc2-client1
+    network_mode: consul
+    volumes:
+      - /Users/kivi/workspace/consul/docker/consul/dc2-client1/config.json:/consul/config.json
+    command:  consul agent -config-file=/consul/config.json -data-dir=/consul/data -config-dir=/consul/config
+    depends_on: 
+      - dc2-server1
