@@ -1,6 +1,4 @@
 {
-  "ui": false,
-  "data_dir": "/consul/data",
   "bind_addr": "0.0.0.0",
   "retry_join": ["dc1-server1"],
 
