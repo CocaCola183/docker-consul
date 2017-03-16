@@ -182,7 +182,7 @@ ui的配置还是很有必要的，这个能非常直观的看到consul集群的
 
 #### 多数据中心
 
-dc2-server1配置中有这么一个配置: `"retry_join_wan": ["dc1-server1"]`
+dc2-server1配置中有这么一个配置: `"retry_join": ["dc1-server1"]`，这样两个dc之间就有关联了。
 
 #### 集群搭建完成之后集群成员查看
 
@@ -222,5 +222,5 @@ db92c7930efb  172.19.0.5:8301  alive   server  0.7.5  2         dc2
 
 ### 推荐三方库
 
-[node-consul](https://github.com/silas/node-consul) 已经实践过，简单的需求都能满足
+[node-consul](https://github.com/silas/node-consul) 已经实践过，简单的需求都能满足  
 [ansible-consul](https://github.com/savagegus/ansible-consul) 如果想使用ansbile部署使用consul，推荐使用这个库，也经过实践验证（可能需要改写）
